@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.15)
+project(signalgen LANGUAGES CXX)
+
+add_subdirectory(pybind11)
+add_subdirectory(matplotplusplus)
+
+include_directories(matplotplusplus/source)
+
+pybind11_add_module(signalgen MODULE main.cpp WITH_SOABI)
+target_link_libraries(signalgen PRIVATE pybind11::headers matplot)
